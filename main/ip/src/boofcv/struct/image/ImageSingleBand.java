@@ -18,7 +18,7 @@
 
 package boofcv.struct.image;
 
-import java.lang.reflect.Array;
+//import java.lang.reflect.Array;
 
 /**
  * <p>
@@ -72,7 +72,8 @@ public abstract class ImageSingleBand<T extends ImageSingleBand> extends ImageBa
 	 * @param height Image's height.
 	 */
 	protected ImageSingleBand(int width, int height) {
-		_setData(Array.newInstance(getDataType().getDataType(), width * height));
+		_setData(_newArray(width * height));
+		//_setData(Array.newInstance(getDataType().getDataType(), width * height));
 		this.startIndex = 0;
 		this.stride = width;
 		this.width = width;
@@ -137,7 +138,8 @@ public abstract class ImageSingleBand<T extends ImageSingleBand> extends ImageBa
 		
 		Object data = _getData();
 
-		if( Array.getLength(data) < width*height ) {
+		//if( Array.getLength(data) < width*height ) {
+		if( _getArrayLength(data) < width*height ) {
 			// declare a new larger image to store the data
 			ImageSingleBand a = _createNew(width,height);
 			_setData(a._getData());

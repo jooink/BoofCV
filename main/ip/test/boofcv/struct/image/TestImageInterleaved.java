@@ -185,5 +185,19 @@ public class TestImageInterleaved {
 		public DummyImage _createNew(int imgWidth, int imgHeight) {
 			return new DummyImage(imgWidth,imgHeight,numBands);
 		}
+
+		@Override
+		protected Object _newArray(int length) {
+			return new int[length];
+		}
+
+		@Override
+		protected int _getArrayLength(Object data) {
+			if(data instanceof int[]) {
+				return ((int[])data).length;
+			}
+			return -1;
+		}
+
 	}
 }

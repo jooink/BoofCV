@@ -71,4 +71,18 @@ public class InterleavedS8 extends InterleavedI8 {
 			return new InterleavedS8();
 		return new InterleavedS8(imgWidth, imgHeight, numBands);
 	}
+	
+	@Override
+	protected Object _newArray(int length) {
+		return new byte[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof byte[]) {
+			return ((byte[])data).length;
+		}
+		return -1;
+	}
+
 }

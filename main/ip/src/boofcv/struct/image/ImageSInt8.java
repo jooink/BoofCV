@@ -57,4 +57,16 @@ public class ImageSInt8 extends ImageInt8<ImageSInt8> {
 		}
 		return new ImageSInt8(imgWidth, imgHeight);
 	}
+	@Override
+	protected Object _newArray(int length) {
+		return new byte[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof byte[]) {
+			return ((byte[])data).length;
+		}
+		return -1;
+	}
 }

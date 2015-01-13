@@ -148,9 +148,24 @@ public class InterleavedF32 extends ImageInterleaved<InterleavedF32> {
 	public void print( String format ) {
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				System.out.printf(format+" "+format+"i ",getBand(x, y,0),getBand(x,y,1));
+				System.out.print(getBand(x, y,0)+" "+getBand(x,y,1));
+				//System.out.printf(format+" "+format+"i ",getBand(x, y,0),getBand(x,y,1));
 			}
 			System.out.println();
 		}
 	}
+	
+	@Override
+	protected Object _newArray(int length) {
+		return new float[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof float[]) {
+			return ((float[])data).length;
+		}
+		return -1;
+	}
+
 }

@@ -84,5 +84,15 @@ public class TestImageBase {
 		public ImageBase _createNew(int imgWidth, int imgHeight) {
 			return null;
 		}
+
+		@Override
+		protected Object _newArray(int length) {
+			return null;
+		}
+
+		@Override
+		protected int _getArrayLength(Object data) {
+			return 0;
+		}
 	}
 }

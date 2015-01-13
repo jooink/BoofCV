@@ -165,5 +165,18 @@ public class TestImageSingleBand {
 		public DummyImage _createNew(int imgWidth, int imgHeight) {
 			return new DummyImage();
 		}
+
+		@Override
+		protected Object _newArray(int length) {
+			return new int[length];
+		}
+
+		@Override
+		protected int _getArrayLength(Object data) {
+			if(data instanceof int[]) {
+				return ((int[])data).length;
+			}
+			return -1;
+		}
 	}
 }

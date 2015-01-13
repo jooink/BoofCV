@@ -56,4 +56,16 @@ public class ImageUInt16 extends ImageInt16<ImageUInt16> {
 			return new ImageUInt16();
 		return new ImageUInt16(imgWidth, imgHeight);
 	}
+	@Override
+	protected Object _newArray(int length) {
+		return new short[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof short[]) {
+			return ((short[])data).length;
+		}
+		return -1;
+	}
 }

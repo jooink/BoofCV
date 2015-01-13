@@ -21,6 +21,7 @@ package boofcv.struct.image;
 import boofcv.core.image.GeneralizedImageOps;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * <p>
@@ -69,7 +70,7 @@ public class MultiSpectral<T extends ImageSingleBand> extends ImageMultiBand<Mul
 	 * Set of gray scale images
 	 */
 	public T bands[];
-
+	
 	/**
 	 * Creates a MultiSpectral image with the specified properties.
 	 *
@@ -236,4 +237,17 @@ public class MultiSpectral<T extends ImageSingleBand> extends ImageMultiBand<Mul
 	public void setBands(T[] bands) {
 		this.bands = bands;
 	}
+	
+	@Override
+	protected Object _newArray(int length) {
+		//TODO not yet implemented
+		return null; 
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		//TODO not yet implemented
+		return -1;  
+	}
+
 }

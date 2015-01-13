@@ -71,4 +71,17 @@ public class InterleavedU16 extends InterleavedI16 {
 			return new InterleavedU16();
 		return new InterleavedU16(imgWidth, imgHeight, numBands);
 	}
+	@Override
+	protected Object _newArray(int length) {
+		return new short[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof short[]) {
+			return ((short[])data).length;
+		}
+		return -1;
+	}
+
 }

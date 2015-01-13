@@ -150,8 +150,8 @@ public abstract class ImageBase<T extends ImageBase> implements Serializable, Cl
 	 *
 	 * @return Clone of this image.
 	 */
-	@SuppressWarnings({"unchecked", "CloneDoesntDeclareCloneNotSupportedException", "CloneDoesntCallSuperClone"})
-	@Override
+//	@SuppressWarnings({"unchecked", "CloneDoesntDeclareCloneNotSupportedException", "CloneDoesntCallSuperClone"})
+//	@Override
 	public T clone() {
 		T ret = _createNew(width,height);
 
@@ -159,4 +159,18 @@ public abstract class ImageBase<T extends ImageBase> implements Serializable, Cl
 
 		return ret;
 	}
+	/**
+	 * Creates a new instance of an Array
+	 *
+	 * @param array length
+	 */
+	protected abstract Object _newArray(int length);
+	
+	/**
+	 * Array Length
+	 *
+	 * @param array length
+	 */
+	protected abstract int _getArrayLength(Object data);
+
 }

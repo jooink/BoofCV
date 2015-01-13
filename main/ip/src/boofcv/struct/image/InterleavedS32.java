@@ -144,4 +144,17 @@ public class InterleavedS32 extends ImageInterleaved<InterleavedS32> {
 			return new InterleavedS32();
 		return new InterleavedS32(imgWidth, imgHeight, numBands);
 	}
+	@Override
+	protected Object _newArray(int length) {
+		return new int[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof int[]) {
+			return ((int[])data).length;
+		}
+		return -1;
+	}
+
 }

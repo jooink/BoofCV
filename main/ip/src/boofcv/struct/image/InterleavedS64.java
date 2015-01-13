@@ -144,4 +144,17 @@ public class InterleavedS64 extends ImageInterleaved<InterleavedS64> {
 			return new InterleavedS64();
 		return new InterleavedS64(imgWidth, imgHeight, numBands);
 	}
+	@Override
+	protected Object _newArray(int length) {
+		return new long[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof long[]) {
+			return ((long[])data).length;
+		}
+		return -1;
+	}
+
 }

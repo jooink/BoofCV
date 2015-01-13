@@ -99,4 +99,16 @@ public class ImageSInt32 extends ImageInteger<ImageSInt32> {
 	public void setData(int[] data) {
 		this.data = data;
 	}
+	@Override
+	protected Object _newArray(int length) {
+		return new int[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof int[]) {
+			return ((int[])data).length;
+		}
+		return -1;
+	}
 }

@@ -110,4 +110,16 @@ public class ImageSInt64 extends ImageSingleBand<ImageSInt64> {
 	public void setData(long[] data) {
 		this.data = data;
 	}
+	@Override
+	protected Object _newArray(int length) {
+		return new long[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof long[]) {
+			return ((long[])data).length;
+		}
+		return -1;
+	}
 }

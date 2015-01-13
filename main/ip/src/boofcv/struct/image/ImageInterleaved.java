@@ -48,7 +48,8 @@ public abstract class ImageInterleaved<T extends ImageInterleaved> extends Image
 	 * @param numBands Number of bands/colors.
 	 */
 	protected ImageInterleaved(int width, int height, int numBands) {
-		_setData(Array.newInstance(getPrimitiveDataType(), width * height * numBands));
+		//_setData(Array.newInstance(getPrimitiveDataType(), width * height * numBands));
+		_setData(_newArray(width * height * numBands));
 		this.startIndex = 0;
 		this.stride = width * numBands;
 		this.numBands = numBands;
@@ -94,7 +95,8 @@ public abstract class ImageInterleaved<T extends ImageInterleaved> extends Image
 
 		Object data = _getData();
 
-		if( Array.getLength(data) < width*height*numBands ) {
+		//if( Array.getLength(data) < width*height*numBands ) {
+		if(_getArrayLength(data) < width*height ) {
 			ImageInterleaved<?> a = _createNew(width,height);
 			_setData(a._getData());
 		}

@@ -58,4 +58,18 @@ public class ImageSInt16 extends ImageInt16<ImageSInt16> {
 			return new ImageSInt16();
 		return new ImageSInt16(imgWidth, imgHeight);
 	}
+	
+	@Override
+	protected Object _newArray(int length) {
+		return new short[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof short[]) {
+			return ((short[])data).length;
+		}
+		return -1;
+	}
+
 }

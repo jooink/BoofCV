@@ -84,7 +84,8 @@ public class ImageFloat64 extends ImageFloat<ImageFloat64> {
 	public void print( String format ) {
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				System.out.printf(format+" ",unsafe_get(x, y));
+				System.out.print(unsafe_get(x, y));
+//				System.out.printf(format+" ",unsafe_get(x, y));
 			}
 			System.out.println();
 		}
@@ -93,7 +94,8 @@ public class ImageFloat64 extends ImageFloat<ImageFloat64> {
 	public void printInt() {
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				System.out.printf("%3d ",(int)unsafe_get(x,y));
+				System.out.print((int)unsafe_get(x,y));
+//				System.out.printf("%3d ",(int)unsafe_get(x,y));
 			}
 			System.out.println();
 		}
@@ -127,5 +129,17 @@ public class ImageFloat64 extends ImageFloat<ImageFloat64> {
 
 	public void setData(double[] data) {
 		this.data = data;
+	}
+	@Override
+	protected Object _newArray(int length) {
+		return new double[length];
+	}
+
+	@Override
+	protected int _getArrayLength(Object data) {
+		if(data instanceof double[]) {
+			return ((double[])data).length;
+		}
+		return -1;
 	}
 }
